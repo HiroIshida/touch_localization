@@ -46,6 +46,9 @@ arm_joint_positions  = [1.32, 1.40, -0.2, 1.72, 0.0, 1.66, 0.0]
 head_joint_names = ["head_pan_joint", "head_tilt_joint"]
 head_joint_positions = [0.0, 0.0]
 
+torso_joint_names = ["torso_lift_joint"]
+torso_joint_positions = [0.9]
+
 if __name__ == "__main__":
     rospy.init_node("prepare_simulated_robot")
 
@@ -54,6 +57,27 @@ if __name__ == "__main__":
         rospy.logerr("This script should not be run on a real robot")
         sys.exit(-1)
 
+    rospy.loginfo("Waiting for torso_controller...")
+    torso_client = actionlib.SimpleActionClient("torso_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
+    torso_client.wait_for_server()
+    rospy.loginfo("...connected.")
+
+    trajectory = JointTrajectory()
+    trajectory.points.append(JointTrajectoryPoint())
+    trajectory.joint_names = torso_joint_names
+    trajectory.points[0].positions = torso_joint_positions
+    trajectory.points[0].velocities = [0.0] * len(torso_joint_positions)
+    trajectory.points[0].accelerations = [0.0] * len(torso_joint_positions)
+    trajectory.points[0].time_from_start = rospy.Duration(5.0)
+
+    torso_goal = FollowJointTrajectoryGoal()
+    torso_goal.trajectory = trajectory
+    torso_goal.goal_time_tolerance = rospy.Duration(0.0)
+
+    torso_client.send_goal(torso_goal)
+    torso_client.wait_for_result(rospy.Duration(5.0))
+
+    """
     rospy.loginfo("Waiting for head_controller...")
     head_client = actionlib.SimpleActionClient("head_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
     head_client.wait_for_server()
@@ -115,3 +139,4 @@ if __name__ == "__main__":
     arm_client.wait_for_result(rospy.Duration(6.0))
     head_client.wait_for_result(rospy.Duration(6.0))
     rospy.loginfo("...done")
+    """
