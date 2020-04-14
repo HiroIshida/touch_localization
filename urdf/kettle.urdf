@@ -7,10 +7,10 @@
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry> <cylinder length="0.2" radius="0.1"/> </geometry>
+            <geometry> <cylinder length="0.2" radius="0.95"/> </geometry>
         </collision>
         <inertial>
-          <mass value="0.001" />
+          <mass value="0.1" />
           <origin xyz="0 0 0" rpy="0 -0 0"/>
           <inertia ixx="1e-03" ixy="0" ixz="0" iyy="1e-03" iyz="0" izz="1e-03"/>
         </inertial>
@@ -20,7 +20,7 @@
     <joint name="kettle_joint" type="revolute">
         <parent link="base_link"/>
         <child link="handle"/>
-        <limit lower="-1.57" upper="1.57" effort="1000000" velocity="10000" />
+        <limit lower="-1.2" upper="1.2" effort="1000000" velocity="10000" />
         <dynamics damping="0.0001" friction="0" />
         <origin xyz="0 0 0.1" rpy="0 -0 0 "/>
         <axis   xyz="0 1 0"/>
@@ -31,8 +31,12 @@
             <origin xyz="0 0 0.1" rpy="0 0 0"/>
             <geometry><box size="0.02 0.21 0.01"/></geometry>
         </visual>
+        <collision>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <geometry><box size="0.02 0.185 0.01"/></geometry>
+        </collision>
         <inertial>
-          <mass value="0.001" />
+          <mass value="0.02" />
           <origin xyz="0 0 0" rpy="0 -0 0"/>
           <inertia ixx="1e-03" ixy="0" ixz="0" iyy="1e-03" iyz="0" izz="1e-03"/>
         </inertial>
@@ -47,10 +51,12 @@
     <link name="side1">
         <visual>
             <origin xyz="0 0.0 0.1" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.02 0.01 0.1"/>
-            </geometry>
+            <geometry><box size="0.02 0.01 0.1"/></geometry>
         </visual>
+        <collision>
+            <origin xyz="0 0.0 0.1" rpy="0 0 0"/>
+            <geometry><box size="0.02 0.01 0.1"/></geometry>
+        </collision>
     </link>
 
     <joint name="dummy2" type="fixed">
@@ -66,5 +72,9 @@
                 <box size="0.02 0.01 0.1"/>
             </geometry>
         </visual>
+        <collision>
+            <origin xyz="0 0.0 0.1" rpy="0 0 0"/>
+            <geometry><box size="0.02 0.01 0.1"/></geometry>
+        </collision>
     </link>
 </robot>
