@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
+
   <!--include file="$(find fetch_gazebo)/launch/simulation.launch" /-->
   <arg name="robot" default="fetch"/>
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
+  <!-- empty map -->
+  <include file="$(find jsk_maps)/launch/start_empty_map.launch"/>
+  <node pkg="tf" type="static_transform_publisher" name="$(anon map_tf01)"
+      args="  0.000   0.000   0.000 0 0 0 /map /base_link 100" />
 
   <!-- Start Gazebo with a blank world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
