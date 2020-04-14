@@ -7,7 +7,7 @@
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry> <cylinder length="0.2" radius="0.95"/> </geometry>
+            <geometry> <cylinder length="0.2" radius="0.095"/> </geometry>
         </collision>
         <inertial>
           <mass value="0.1" />
