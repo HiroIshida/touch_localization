@@ -3,11 +3,19 @@
     <link name="base_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <cylinder length="0.2" radius="0.1"/>
-            </geometry>
+            <geometry> <cylinder length="0.2" radius="0.1"/> </geometry>
         </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry> <cylinder length="0.2" radius="0.1"/> </geometry>
+        </collision>
+        <inertial>
+          <mass value="0.001" />
+          <origin xyz="0 0 0" rpy="0 -0 0"/>
+          <inertia ixx="1e-03" ixy="0" ixz="0" iyy="1e-03" iyz="0" izz="1e-03"/>
+        </inertial>
     </link>
+
 
     <joint name="kettle_joint" type="revolute">
         <parent link="base_link"/>
@@ -21,10 +29,13 @@
     <link name="handle">
         <visual>
             <origin xyz="0 0 0.1" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.02 0.21 0.01"/>
-            </geometry>
+            <geometry><box size="0.02 0.21 0.01"/></geometry>
         </visual>
+        <inertial>
+          <mass value="0.001" />
+          <origin xyz="0 0 0" rpy="0 -0 0"/>
+          <inertia ixx="1e-03" ixy="0" ixz="0" iyy="1e-03" iyz="0" izz="1e-03"/>
+        </inertial>
     </link>
 
     <joint name="dummy1" type="fixed">
