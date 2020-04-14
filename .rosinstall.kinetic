@@ -1,6 +1,11 @@
-# This file is for work space in kinetic user PC.
+- git:
+    local-name: jsk-ros-pkg/jsk_robot
+    uri: https://github.com/jsk-ros-pkg/jsk_robot.git
 
-# For proximity sensor on fetch hand.
+- git:
+    local-name: jsk-ros-pkg/jsk_demos
+    uri: https://github.com/jsk-ros-pkg/jsk_demos.git
+
 - git:
     local-name: touch_localization
     uri: https://github.com/HiroIshida/touch_localization.git
@@ -28,7 +33,7 @@
     version: 0.7.14
 
 # pr2eus
--git:
+- git:
     local-name: jsk_pr2eus
     uri: https://github.com/HiroIshida/jsk_pr2eus.git
     version: fixbug-shortest-angle
