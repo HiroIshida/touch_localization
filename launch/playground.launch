@@ -29,8 +29,8 @@
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
     args="-param object_description -urdf 
     -x 3.8 -y 3.0 -z 0.88 
-    -R 0.0 -P 0.0 -Y 0.7 
+    -R 0.0 -P 0.0 -Y 0.0 
     -model kettle 
-    -J kettle_joint 0.7"/>
+    -J kettle_joint 0.0"/>
 
 </launch>
