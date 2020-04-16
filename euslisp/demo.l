@@ -31,12 +31,7 @@
         :rotation-axis t :check-collision t :use-torso nil)
 (show-whole (list *co-object*))
 (transmit)
-
-(dotimes (i 5)
-  (send *ri* :send-cmd-vel-raw 1 0)
-  (unix:usleep 400000))
-(send *ri* :wait-interpolation)
-(unix:sleep 1)
+(send *ri* :go-pos-unsafe 1 0 0)
 
 (send *ri* :start-grasp :effort 0)
 (send *fetch* :rarm :move-end-pos #f(0 0 100) :world)
