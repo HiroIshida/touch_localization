@@ -19,5 +19,6 @@
 
   <!-- Start Gazebo with a cusotm playground -->
   <include file="$(find touch_localization)/launch/playground.launch"/>
+  <node name="odom_relay" pkg="topic_tools" type="relay" args="/odom /odom_combined" />
 
 </launch>
